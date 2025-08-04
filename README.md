@@ -26,3 +26,12 @@ npm publish
 ```
 
 That's it!
+
+### 本地调试
+```bash
+# 发布到本地
+npm link 
+# 测试
+schematics template:my-schematic
+
+```
