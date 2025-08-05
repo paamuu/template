@@ -8,6 +8,21 @@
 npm install
 ```
 
+## 构建项目
+
+在运行任何schematic之前，需要先构建项目。构建过程会：
+1. 编译TypeScript文件到build目录
+2. 复制collection.json到build目录
+3. 复制所有schema.json文件到对应的build子目录
+4. 复制所有files目录到对应的build子目录
+5. 创建build目录的package.json文件
+
+```bash
+npm run build
+```
+
+构建完成后，build目录将包含完整的可执行schematics集合。
+
 ## 可用的 Schematics
 
 - `my-schematic`: 基础示例 schematic，创建一个简单的 "hello world" 文件

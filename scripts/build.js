@@ -58,9 +58,15 @@ function build() {
     process.exit(1);
   }
 
-  // 3. 复制 collection.json
-  console.log('复制 collection.json...');
-  copyFile('src/collection.json', 'build/collection.json');
+  // 3. 复制并修复 collection.json
+  console.log('复制并修复 collection.json...');
+  const collectionContent = fs.readFileSync('src/collection.json', 'utf-8');
+  const collection = JSON.parse(collectionContent);
+  
+  // 修复 schema 路径
+  collection.$schema = "@angular-devkit/schematics/collection-schema.json";
+  
+  fs.writeFileSync('build/collection.json', JSON.stringify(collection, null, 2));
 
   // 4. 复制所有 schema.json 文件
   console.log('复制 schema.json 文件...');

@@ -16,4 +16,7 @@ yarn-error.log*
 # Mac OSX Finder files.
 **/.DS_Store
 .DS_Store
-build
+# build directory contains the compiled schematics
+# Uncomment the next line if you don't want to commit build files
+# build
+output

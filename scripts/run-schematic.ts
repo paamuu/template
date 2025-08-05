@@ -23,7 +23,7 @@ export class SchematicRunner {
 
   constructor(projectRoot: string = process.cwd()) {
     this.projectRoot = projectRoot;
-    this.collectionPath = '.'; // 使用当前集合
+    this.collectionPath = path.join(projectRoot, 'build'); // 使用构建后的集合的绝对路径
   }
 
   /**

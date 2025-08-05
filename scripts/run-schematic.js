@@ -50,11 +50,13 @@ function main() {
       fs.mkdirSync(outputDir, { recursive: true });
     }
 
-    // 构建 schematics 命令
-    const command = `npx schematics .:${schematicName} ${options}`;
+    // 构建 schematics 命令 - 使用绝对路径
+    const buildPath = path.join(process.cwd(), 'build');
+    const command = `npx schematics ${buildPath}:${schematicName} ${options}`;
     
     console.log(`正在执行: ${command}`);
     console.log('输出目录:', outputDir);
+    console.log('集合路径:', buildPath);
     console.log('---');
 
     // 在输出目录中执行 schematic
