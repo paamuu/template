@@ -3,8 +3,19 @@
   "version": "0.0.0",
   "description": "A schematics",
   "scripts": {
-    "build": "tsc -p tsconfig.json",
-    "test": "npm run build && jasmine src/**/*_spec.js"
+    "build": "node scripts/build.js",
+    "build:tsc": "tsc -p tsconfig.json",
+    "test": "npm run build && jasmine src/**/*_spec.js",
+    "schematics": "schematics",
+    "run:my-schematic": "npm run build && schematics ./build:my-schematic",
+    "run:my-full-schematic": "npm run build && schematics ./build:my-full-schematic",
+    "run:my-other-schematic": "npm run build && schematics ./build:my-other-schematic",
+    "run": "node scripts/run-schematic.js",
+    "run:ts": "ts-node scripts/run-schematic.ts",
+    "list": "ts-node scripts/run-schematic.ts --list",
+    "demo:basic": "npm run run my-schematic",
+    "demo:full": "npm run run my-full-schematic -- --name=demo --index=10",
+    "demo:dry": "npm run run my-full-schematic -- --name=demo --index=10 --dry-run"
   },
   "keywords": [
     "schematics"
@@ -15,11 +26,13 @@
   "dependencies": {
     "@angular-devkit/core": "^20.1.4",
     "@angular-devkit/schematics": "^20.1.4",
+    "@angular-devkit/schematics-cli": "^20.1.4",
     "typescript": "~5.8.2"
   },
   "devDependencies": {
     "@types/node": "^20.17.19",
     "@types/jasmine": "~5.1.0",
-    "jasmine": "~5.8.0"
+    "jasmine": "~5.8.0",
+    "ts-node": "^10.9.2"
   }
 }
